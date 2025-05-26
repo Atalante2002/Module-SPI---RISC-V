@@ -61,3 +61,5 @@ Elementos pendientes o en desarrollo futuro Aquí sé sincero, directo y justifi
 ❌ No se añadió detección de errores o timeouts en caso de transmisiones fallidas o esclavo desconectado.
 
 ❌ Sin validación formal exhaustiva (por ejemplo, con SymbiYosys).
+
+En el desarrollo de este módulo SPI, se ha cubierto satisfactoriamente la funcionalidad esencial del protocolo SPI en modo maestro, integrándose con el procesador RISC-V mediante una interfaz de memoria mapeada y generando las señales estándar del protocolo. Además, se ha diseñado una FSM robusta y se han contemplado mecanismos de control y señalización como interrupciones.

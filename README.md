@@ -54,7 +54,7 @@ Elementos de la especificación que fueron cubiertos:
 
 ✔ Diseño estructurado y modular, compatible con síntesis digital (OpenLane).
 
-Elementos pendientes o en desarrollo futuro Aquí sé sincero, directo y justifica si no lo implementaste, pero también muestra que eres consciente de ello:
+Elementos pendientes o en desarrollo futuro:
 
 ❌ No se implementó el soporte para múltiples esclavos (es decir, múltiples líneas SS). Actualmente solo se controla un esclavo SPI.
 

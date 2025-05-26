@@ -56,7 +56,7 @@ Elementos de la especificación que fueron cubiertos:
 
 Elementos pendientes o en desarrollo futuro Aquí sé sincero, directo y justifica si no lo implementaste, pero también muestra que eres consciente de ello:
 
-❌ No se implementó el soporte para múltiples esclavos (es decir, múltiples líneas CS_n). Actualmente solo se controla un esclavo SPI.
+❌ No se implementó el soporte para múltiples esclavos (es decir, múltiples líneas SS). Actualmente solo se controla un esclavo SPI.
 
 ❌ No se añadió detección de errores o timeouts en caso de transmisiones fallidas o esclavo desconectado.
 

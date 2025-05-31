@@ -38,6 +38,10 @@ Representación Máquina de estados Mealy
 
 ![image](https://github.com/user-attachments/assets/a8059fd4-cb07-4bc9-abd7-bc1f7306d4a3)
 
+La máquina de estados describe el flujo de control de un módulo SPI con los siguientes estados y transiciones:
+
+Comienza en estado **IDLE** (inactivo) cuando tanto `SPL_ON` como `SPL_FRAME_START` están en 0. Al activarse estas señales (`SPL_ON = 1` y `SPL_FRAME_START = 1`), la máquina pasa a una fase de **configuración** donde se prepara la comunicación. Luego, cuando `SPL_START` cambia de 0 a 1, se inicia el estado **TRANSMIT** (transmisión), activando `LOAD_DATA = 1` para cargar datos y `EN_SCK = 1` para habilitar el reloj SPI. Finalmente, al completarse la transferencia, el sistema entra al estado **DONE**, donde se genera una interrupción (`IRQ = 1`) para indicar la finalización, antes de volver al estado inactivo. Esta secuencia garantiza una operación ordenada: inicialización → transmisión → notificación, con control preciso de las señales críticas como el reloj (SCK) y la carga de datos.
+
 Entradas y Salidas Principales
 
 Entradas:

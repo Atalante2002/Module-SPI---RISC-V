@@ -131,13 +131,15 @@ SPI_ORDER = 1 = MSB primero
 
 ![image](https://github.com/user-attachments/assets/4c3030c3-fa12-4bb9-8e54-e83200621b2c)
 
-
+Este testbench verifica el módulo SPI en **modo 2 (CPOL=1, CPHA=1)**, transmitiendo **16 bits en orden MSB primero**. Las señales clave analizadas son **MISO** (entrada), **MOSI** (salida), **SCK** (reloj con polaridad invertida) y **SS** (selección de esclavo). Los registros muestran **SPI_DATA_IN** con valores como `0x00000000` y `0x00000001`, mientras que **SPI_DATA_OUT** mantiene un valor fijo (`0x00010003`), lo que sugiere una prueba de transmisión constante o un registro de salida predefinido. El **contador de bits (counter_bit)** no sigue un patrón claro, repitiendo valores como `00000001`, lo que podría indicar un error en la simulación o una captura incompleta. El objetivo es validar la sincronización y el formato de datos en este modo, pero los resultados requieren revisión para confirmar si el comportamiento es esperado o existe un fallo en el diseño o el testbench.
 
 SPI_MODE = 10 = modo 2
 SPI_DATA_LEN = 11 = 32bits
 SPI_ORDER = 0 = LSB primero
 
 ![image](https://github.com/user-attachments/assets/282bb9ee-6dbc-441c-8c7e-91bdcd3dbaa8)
+
+
 
 SPI_MODE = 11 = modo 3
 SPI_DATA_LEN = 01 = 16bits

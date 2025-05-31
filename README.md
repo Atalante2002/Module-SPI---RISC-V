@@ -78,6 +78,11 @@ Elementos pendientes o en desarrollo futuro:
 
 En el desarrollo de este módulo SPI, se ha cubierto satisfactoriamente la funcionalidad esencial del protocolo SPI en modo maestro, integrándose con el procesador RISC-V mediante una interfaz de memoria mapeada y generando las señales estándar del protocolo. Además, se ha diseñado una FSM robusta y se han contemplado mecanismos de control y señalización como interrupciones.
 
+Añasir información sobre vista RTL
+
+
+
+
 Con el fin de validar el correcto funcionamiento del módulo SPI desarrollado, se diseñaron y ejecutaron una serie de pruebas mediante testbenchs escritos en Verilog. Estas pruebas permiten verificar de forma controlada el comportamiento del módulo bajo diferentes condiciones operativas, asegurando que se cumplan los requerimientos funcionales establecidos en la especificación. En particular, se evaluaron los distintos modos de operación del protocolo SPI definidos por la configuración de las señales CPOL (Clock Polarity) y CPHA (Clock Phase), los cuales afectan la sincronización de los datos en las líneas MOSI y MISO respecto a los flancos del reloj serial SCLK. Para cada modo, se simularon escenarios completos de transmisión y recepción de datos, observando la integridad del flujo de información, la correcta activación de señales de control como SS, y la generación oportuna de señales de estado como done e irq_spi. Estas pruebas resultan fundamentales no solo para validar la lógica interna del sistema, sino también para asegurar su integridad temporal de cara a una futura síntesis física o implementación en FPGA o ASIC.
 
 la siguiente prueba tiene los siguientes parametros:

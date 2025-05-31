@@ -113,7 +113,7 @@ SPI_ORDER = 0 = LSB primero
 
 Este testbench evalúa el módulo SPI configurado en modo 2 (CPOL=1, CPHA=1), con una longitud de datos de 16 bits (SPI_DATA_LEN=01) y un orden de transmisión MSB primero (SPI_ORDER=1). Las señales clave analizadas incluyen MISO (datos recibidos), MOSI (datos enviados), SCK (reloj SPI con polaridad invertida y muestreo en flancos de bajada), y SS (selección de esclavo activa en bajo).
 
-En la simulación, se observa que SPI_DATA_IN está configurado en 0x00000000 y 0x00000001, mientras que SPI_DATA_OUT muestra 0x00010003 en ambos casos, lo que sugiere que el módulo está enviando o recibiendo datos predefinidos. El contador de bits (counter_bit) indica la posición actual de la transmisión, con valores que van desde A01 hasta Y21, representando posiblemente un flujo de datos de 16 bits seguido de bits adicionales (hasta 21), lo que podría indicar una prueba extendida o un error en la captura.
+En la simulación, se observa que SPI_DATA_IN está configurado en 0x00000000 y 0x00000001, mientras que SPI_DATA_OUT muestra 0x00010003 en ambos casos, lo que sugiere que el módulo está enviando o recibiendo datos predefinidos. El contador de bits (counter_bit) indica la posición actual de la transmisión, con valores que van desde A01 hasta Y21, representando posiblemente un flujo de datos de 16 bits seguido de bits adicionales (hasta 21).
 
 El testbench busca validar que:
 
@@ -131,7 +131,7 @@ SPI_ORDER = 1 = MSB primero
 
 ![image](https://github.com/user-attachments/assets/4c3030c3-fa12-4bb9-8e54-e83200621b2c)
 
-Este testbench verifica el módulo SPI en **modo 2 (CPOL=1, CPHA=1)**, transmitiendo **16 bits en orden MSB primero**. Las señales clave analizadas son **MISO** (entrada), **MOSI** (salida), **SCK** (reloj con polaridad invertida) y **SS** (selección de esclavo). Los registros muestran **SPI_DATA_IN** con valores como `0x00000000` y `0x00000001`, mientras que **SPI_DATA_OUT** mantiene un valor fijo (`0x00010003`), lo que sugiere una prueba de transmisión constante o un registro de salida predefinido. El **contador de bits (counter_bit)** no sigue un patrón claro, repitiendo valores como `00000001`, lo que podría indicar un error en la simulación o una captura incompleta. El objetivo es validar la sincronización y el formato de datos en este modo, pero los resultados requieren revisión para confirmar si el comportamiento es esperado o existe un fallo en el diseño o el testbench.
+Este testbench verifica el módulo SPI en **modo 2 (CPOL=1, CPHA=1)**, transmitiendo **16 bits en orden MSB primero**. Las señales clave analizadas son **MISO** (entrada), **MOSI** (salida), **SCK** (reloj con polaridad invertida) y **SS** (selección de esclavo). Los registros muestran **SPI_DATA_IN** con valores como `0x00000000` y `0x00000001`, mientras que **SPI_DATA_OUT** mantiene un valor fijo (`0x00010003`), lo que sugiere una prueba de transmisión constante o un registro de salida predefinido. El **contador de bits (counter_bit)** no sigue un patrón claro, repitiendo valores como `00000001`, lo que podría indicar un error en la simulación o una captura incompleta. El objetivo es validar la sincronización y el formato de datos en este modo.
 
 SPI_MODE = 10 = modo 2
 SPI_DATA_LEN = 11 = 32bits

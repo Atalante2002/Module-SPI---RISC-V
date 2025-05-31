@@ -103,8 +103,6 @@ SS: Señal de selección activa en bajo.
 
 SPI_DATA_IN/OUT: Datos de entrada (16 bits) y salida (16 bits) del módulo.
 
-done/irq_spi: Indican fin de transmisión e interrupción.
-
 El objetivo es validar la sincronización, integridad de datos y temporización en este modo SPI.
 
 SPI_MODE = 01 = modo 1

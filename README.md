@@ -8,6 +8,10 @@ El presente repositorio contiene la información y archivos desarrollados respec
 
 El módulo SPI_Controller es la unidad de control secuencial del sistema SPI Master, responsable de coordinar el proceso de comunicación con dispositivos esclavos SPI. En esta versión, se implementa como una máquina de estados finitos (FSM) tipo Mealy, lo cual permite generar salidas que dependen tanto del estado actual como de las entradas del sistema.
 
+Representación Máquina de estados Mealy
+
+![image](https://github.com/user-attachments/assets/a8059fd4-cb07-4bc9-abd7-bc1f7306d4a3)
+
 Se definieron dos partes fundamentales en el diseño del módulo para la comunicación SPI, la primera realiza toda la lógica de la comunicación donde aparte de mandar y recibir datos simultáneamente se debe configurar todos los parámetros según el registro de control y bitrate, la segunda parte se encarga de controlar los registros según el usuario.
 
 ![image](https://github.com/user-attachments/assets/f62240db-3ef8-4061-b1b2-f58559bf791f)
@@ -35,10 +39,6 @@ SCLK: Clock SPI: señal de reloj generada por el maestro y enviada al esclavo.
 SS:Slave Select: línea de selección del esclavo (activo en bajo). También se le puede llamar CS_n.
 
 IRQ_SPI: Señal de interrupción al CPU. Se activa al finalizar una transmisión SPI o cuando se presenta una condición especial (según implementación del FSM).
-
-Representación Máquina de estados Mealy
-
-![image](https://github.com/user-attachments/assets/a8059fd4-cb07-4bc9-abd7-bc1f7306d4a3)
 
 Elementos de la especificación que fueron cubiertos:
 

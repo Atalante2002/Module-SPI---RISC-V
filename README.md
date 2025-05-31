@@ -139,7 +139,15 @@ SPI_ORDER = 0 = LSB primero
 
 ![image](https://github.com/user-attachments/assets/282bb9ee-6dbc-441c-8c7e-91bdcd3dbaa8)
 
+Este testbench evalúa una comunicación SPI configurada en modo 2 (CPOL=1, CPHA=1), transmitiendo datos de 32 bits con orden LSB primero. Se analizan las señales típicas del protocolo (MOSI, MISO, reloj y selección de esclavo) para verificar la correcta sincronización y transferencia de información.
 
+El módulo procesa datos de entrada y genera salidas, mostrando un comportamiento secuencial acorde al modo SPI configurado. El testbench comprueba principalmente:
+
+La alineación temporal de las señales con el reloj en modo 2
+
+El orden correcto de bits (LSB primero)
+
+La integridad en la transferencia de 32 bits
 
 SPI_MODE = 11 = modo 3
 SPI_DATA_LEN = 01 = 16bits

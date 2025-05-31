@@ -30,6 +30,8 @@ Esta implementación garantiza compatibilidad con múltiples dispositivos SPI, y
 
 ![image](https://github.com/user-attachments/assets/515adb51-d40d-4347-a163-011cecc3139a)
 
+Este módulo de control SPI gestiona la comunicación serial configurable mediante un diseño jerárquico que integra temporización, procesamiento de datos y lógica de control. El **divisor de frecuencia (clk_divider)** ajusta la velocidad del reloj SPI (SCK) a partir del reloj principal (clk_cpu), mientras que la señal **SPI_CTRL** configura parámetros como el modo de operación y el bitrate. El módulo procesa datos de entrada (SPI_DATA_IN) y salida (SPI_DATA_OUT) con base en la longitud definida (SPI_DATA_LEN), sincronizados por las señales **load_data** y **load_data_in**. La lógica de control (**SPI_logic_Control**) coordina la generación de SCK, la activación de la línea SS (slave select) y las señales de estado (**done**), asegurando una transferencia confiable. Las señales intermedias (**SCK_inter**, **en_SCK**) optimizan la generación del reloj, mientras que **NEW_SPI_DATA_IN/OUT** reflejan los datos actualizados en tiempo real. Este diseño permite flexibilidad en frecuencia, formato de datos y modos SPI, cumpliendo con requisitos de adaptabilidad y eficiencia.
+
 Al tener estos dos módulos se realiza una máquina de estados, la cual se encarga de manejar toda la lógica de control de la comunicación.
 
 ![image](https://github.com/user-attachments/assets/ad339214-2a01-49d5-a12f-4664fe07b0cc)

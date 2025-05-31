@@ -6,12 +6,6 @@ Este módulo actúa como maestro SPI, siendo responsable de generar las señales
 
 El presente repositorio contiene la información y archivos desarrollados respecto del módulo para la comunicación SPI descripto en Verilog, además de los archivos generados en la síntesis por la herramienta Openlane.
 
-El módulo SPI_Controller es la unidad de control secuencial del sistema SPI Master, responsable de coordinar el proceso de comunicación con dispositivos esclavos SPI. En esta versión, se implementa como una máquina de estados finitos (FSM) tipo Mealy, lo cual permite generar salidas que dependen tanto del estado actual como de las entradas del sistema.
-
-Representación Máquina de estados Mealy
-
-![image](https://github.com/user-attachments/assets/a8059fd4-cb07-4bc9-abd7-bc1f7306d4a3)
-
 Se definieron dos partes fundamentales en el diseño del módulo para la comunicación SPI, la primera realiza toda la lógica de la comunicación donde aparte de mandar y recibir datos simultáneamente se debe configurar todos los parámetros según el registro de control y bitrate, la segunda parte se encarga de controlar los registros según el usuario.
 
 ![image](https://github.com/user-attachments/assets/f62240db-3ef8-4061-b1b2-f58559bf791f)
@@ -37,6 +31,12 @@ Este diseño mejora la velocidad de respuesta del controlador, permitiendo que c
 Al tener estos dos módulos se realiza una máquina de estados, la cual se encarga de manejar toda la lógica de control de la comunicación.
 
 ![image](https://github.com/user-attachments/assets/ad339214-2a01-49d5-a12f-4664fe07b0cc)
+
+El módulo SPI_Controller es la unidad de control secuencial del sistema SPI Master, responsable de coordinar el proceso de comunicación con dispositivos esclavos SPI. En esta versión, se implementa como una máquina de estados finitos (FSM) tipo Mealy, lo cual permite generar salidas que dependen tanto del estado actual como de las entradas del sistema.
+
+Representación Máquina de estados Mealy
+
+![image](https://github.com/user-attachments/assets/a8059fd4-cb07-4bc9-abd7-bc1f7306d4a3)
 
 Entradas y Salidas Principales
 

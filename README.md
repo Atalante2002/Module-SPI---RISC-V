@@ -8,6 +8,10 @@ El presente repositorio contiene la información y archivos desarrollados respec
 
 El módulo SPI_Controller es la unidad de control secuencial del sistema SPI Master, responsable de coordinar el proceso de comunicación con dispositivos esclavos SPI. En esta versión, se implementa como una máquina de estados finitos (FSM) tipo Mealy, lo cual permite generar salidas que dependen tanto del estado actual como de las entradas del sistema.
 
+Se definieron dos partes fundamentales en el diseño del módulo para la comunicación SPI, la primera realiza toda la lógica de la comunicación donde aparte de mandar y recibir datos simultáneamente se debe configurar todos los parámetros según el registro de control y bitrate, la segunda parte se encarga de controlar los registros según el usuario.
+
+![image](https://github.com/user-attachments/assets/f62240db-3ef8-4061-b1b2-f58559bf791f)
+
 Este diseño mejora la velocidad de respuesta del controlador, permitiendo que ciertas señales de control (como SPI_FRAME_START o SS) cambien de forma inmediata ante condiciones específicas sin esperar un ciclo de reloj completo. Esto resulta útil en sistemas con alta sensibilidad temporal, como transmisiones SPI sincronizadas a bordes de reloj.
 
 Entradas y Salidas Principales
@@ -61,10 +65,6 @@ Elementos pendientes o en desarrollo futuro:
 ❌ No se añadió detección de errores o timeouts en caso de transmisiones fallidas o esclavo desconectado.
 
 En el desarrollo de este módulo SPI, se ha cubierto satisfactoriamente la funcionalidad esencial del protocolo SPI en modo maestro, integrándose con el procesador RISC-V mediante una interfaz de memoria mapeada y generando las señales estándar del protocolo. Además, se ha diseñado una FSM robusta y se han contemplado mecanismos de control y señalización como interrupciones.
-
-Se definieron dos partes fundamentales en el diseño del módulo para la comunicación SPI, la primera realiza toda la lógica de la comunicación donde aparte de mandar y recibir datos simultáneamente se debe configurar todos los parámetros según el registro de control y bitrate, la segunda parte se encarga de controlar los registros según el usuario.
-
-![image](https://github.com/user-attachments/assets/f62240db-3ef8-4061-b1b2-f58559bf791f)
 
 Inicialmente se diseñó la parte de la lógica de la comunicación, la cual se divide en 3 módulos como se muestra en la siguiente figura.
 

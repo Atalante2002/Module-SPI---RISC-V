@@ -61,3 +61,59 @@ Elementos pendientes o en desarrollo futuro:
 ❌ No se añadió detección de errores o timeouts en caso de transmisiones fallidas o esclavo desconectado.
 
 En el desarrollo de este módulo SPI, se ha cubierto satisfactoriamente la funcionalidad esencial del protocolo SPI en modo maestro, integrándose con el procesador RISC-V mediante una interfaz de memoria mapeada y generando las señales estándar del protocolo. Además, se ha diseñado una FSM robusta y se han contemplado mecanismos de control y señalización como interrupciones.
+
+Se definieron dos partes fundamentales en el diseño del módulo para la comunicación SPI, la primera realiza toda la lógica de la comunicación donde aparte de mandar y recibir datos simultáneamente se debe configurar todos los parámetros según el registro de control y bitrate, la segunda parte se encarga de controlar los registros según el usuario.
+
+![image](https://github.com/user-attachments/assets/f62240db-3ef8-4061-b1b2-f58559bf791f)
+
+Inicialmente se diseñó la parte de la lógica de la comunicación, la cual se divide en 3 módulos como se muestra en la siguiente figura.
+
+![image](https://github.com/user-attachments/assets/9d1b18b1-f243-4411-8b0e-b84085ba6d4e)
+
+Primero se desarrolló un módulo para dividir la frecuencia del reloj de la CPU con el fin de generar el reloj interno SCK, el cual debe tener una frecuencia menor y ajustable por el usuario.
+
+![image](https://github.com/user-attachments/assets/515adb51-d40d-4347-a163-011cecc3139a)
+
+Al tener estos dos módulos se realiza una máquina de estados, la cual se encarga de manejar toda la lógica de control de la comunicación.
+
+![image](https://github.com/user-attachments/assets/ad339214-2a01-49d5-a12f-4664fe07b0cc)
+
+Para verificar todo el funcionamiento se realizaron las siguientes pruebas: 
+
+la siguiente prueba tiene los siguientes parametros:
+
+SPI_MODE = 10 = modo 2
+SPI_DATA_LEN = 01 = 16bits
+SPI_ORDER = 0 = LSB primero
+
+![image](https://github.com/user-attachments/assets/67ea88f4-58aa-403c-aa7e-86d95f76ba8b)
+
+SPI_MODE = 01 = modo 1
+SPI_DATA_LEN = 11 = 32bits
+SPI_ORDER = 0 = LSB primero
+
+![image](https://github.com/user-attachments/assets/3249ebbf-5854-4373-8926-9555463060cb)
+
+SPI_MODE = 10 = modo 2
+SPI_DATA_LEN = 01 = 16bits
+SPI_ORDER = 1 = MSB primero
+
+![image](https://github.com/user-attachments/assets/4c3030c3-fa12-4bb9-8e54-e83200621b2c)
+
+SPI_MODE = 10 = modo 2
+SPI_DATA_LEN = 11 = 32bits
+SPI_ORDER = 0 = LSB primero
+
+![image](https://github.com/user-attachments/assets/282bb9ee-6dbc-441c-8c7e-91bdcd3dbaa8)
+
+SPI_MODE = 11 = modo 3
+SPI_DATA_LEN = 01 = 16bits
+SPI_ORDER = 1 = MSB primero
+
+![image](https://github.com/user-attachments/assets/83265d00-64d3-49db-887f-25487299eb52)
+
+
+
+
+
+

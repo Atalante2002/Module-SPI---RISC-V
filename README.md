@@ -78,7 +78,7 @@ Al tener estos dos módulos se realiza una máquina de estados, la cual se encar
 
 ![image](https://github.com/user-attachments/assets/ad339214-2a01-49d5-a12f-4664fe07b0cc)
 
-Para verificar todo el funcionamiento se realizaron las siguientes pruebas: 
+Con el fin de validar el correcto funcionamiento del módulo SPI desarrollado, se diseñaron y ejecutaron una serie de pruebas mediante testbenchs escritos en Verilog. Estas pruebas permiten verificar de forma controlada el comportamiento del módulo bajo diferentes condiciones operativas, asegurando que se cumplan los requerimientos funcionales establecidos en la especificación. En particular, se evaluaron los distintos modos de operación del protocolo SPI definidos por la configuración de las señales CPOL (Clock Polarity) y CPHA (Clock Phase), los cuales afectan la sincronización de los datos en las líneas MOSI y MISO respecto a los flancos del reloj serial SCLK. Para cada modo, se simularon escenarios completos de transmisión y recepción de datos, observando la integridad del flujo de información, la correcta activación de señales de control como SS, y la generación oportuna de señales de estado como done e irq_spi. Estas pruebas resultan fundamentales no solo para validar la lógica interna del sistema, sino también para asegurar su integridad temporal de cara a una futura síntesis física o implementación en FPGA o ASIC.
 
 la siguiente prueba tiene los siguientes parametros:
 

@@ -93,6 +93,20 @@ SPI_ORDER = 0 = LSB primero
 
 ![image](https://github.com/user-attachments/assets/67ea88f4-58aa-403c-aa7e-86d95f76ba8b)
 
+El testbench verifica el módulo SPI en modo 2 (CPOL=1, CPHA=1), con transmisión de 16 bits y orden LSB primero. Se analizan señales clave como:
+
+SCLK: Reloj con polaridad invertida (CPOL=1) y datos capturados en flanco de bajada (CPHA=1).
+
+MOSI/MISO: Datos enviados/recibidos bit a bit, empezando por el LSB.
+
+SS: Señal de selección activa en bajo.
+
+SPI_DATA_IN/OUT: Datos de entrada (16 bits) y salida (16 bits) del módulo.
+
+done/irq_spi: Indican fin de transmisión e interrupción.
+
+El objetivo es validar la sincronización, integridad de datos y temporización en este modo SPI.
+
 SPI_MODE = 01 = modo 1
 SPI_DATA_LEN = 11 = 32bits
 SPI_ORDER = 0 = LSB primero

@@ -155,7 +155,13 @@ SPI_ORDER = 1 = MSB primero
 
 ![image](https://github.com/user-attachments/assets/83265d00-64d3-49db-887f-25487299eb52)
 
+Este testbench evalúa el módulo SPI configurado en modo 3 (CPOL=1, CPHA=0), transmitiendo 16 bits con orden MSB primero. La prueba verifica:
 
+Temporización: Sincronización entre datos (MOSI/MISO) y el reloj (SCK) en modo 3.
+
+Formato de datos: Correcta transmisión bit a bit comenzando por el MSB.
+
+Señales de control: Comportamiento de la línea SS (selección de esclavo).
 
 
 

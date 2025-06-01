@@ -112,13 +112,13 @@ Primer byte (Time 000-005):
 
 MOSI (Tx): 9 (hex 0x09, binario 00001001). Se envía como secuencia serial: 1 (LSB), 0, 0, 1, 0, 0, 0, 0.
 
-MISO (Rx): 9 (mismo valor, posible eco de prueba).
+MISO (Rx): 11 (hex 0xB, binario 01011).
 
 Segundo byte (Time 105-107):
 
 MOSI (Tx): 169 (hex 0xA9, binario 10101001). Secuencia serial: 1, 0, 0, 1, 0, 1, 0, 1.
 
-MISO (Rx): 169 (confirmación).
+MISO (Rx): 149 (hex 0x95, binario 10101001).
 
 Señales de control:
 
@@ -134,7 +134,7 @@ Observaciones:
 
 Los valores 000, 005, 105, 107 son marcas de tiempo (en ns o ciclos).
 
-Los datos en SPI_DATA_IN y SPI_DATA_OUT no son legibles en la imagen (posiblemente ruido o formato corrupto).
+Los datos en SPI_DATA_IN y SPI_DATA_OUT nos permiten evidenciar los datos de entrada y salida.
 
 La prueba confirma el funcionamiento básico del modo SPI 0 con datos full-duplex.
 

@@ -138,6 +138,8 @@ Los datos en SPI_DATA_IN y SPI_DATA_OUT no son legibles en la imagen (posiblemen
 
 La prueba confirma el funcionamiento básico del modo SPI 0 con datos full-duplex.
 
+Configuración del protocolo:
+
 SPI_MODE = 01 = modo 1
 SPI_DATA_LEN = 11 = 32bits
 SPI_ORDER = 0 = LSB primero

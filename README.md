@@ -123,19 +123,13 @@ SPI_ORDER = 0 = LSB primero
 
 ![image](https://github.com/user-attachments/assets/3249ebbf-5854-4373-8926-9555463060cb)
 
-Este testbench evalúa el módulo SPI configurado en modo 2 (CPOL=1, CPHA=1), con una longitud de datos de 16 bits (SPI_DATA_LEN=01) y un orden de transmisión MSB primero (SPI_ORDER=1). Las señales clave analizadas incluyen MISO (datos recibidos), MOSI (datos enviados), SCK (reloj SPI con polaridad invertida y muestreo en flancos de bajada), y SS (selección de esclavo activa en bajo).
+El testbench muestra una comunicación SPI en modo 0 (CPOL=0, CPHA=0) donde se transmiten 8 bits en orden LSB primero. Según los datos observados:
 
-En la simulación, se observa que SPI_DATA_IN está configurado en 0x00000000 y 0x00000001, mientras que SPI_DATA_OUT muestra 0x00010003 en ambos casos, lo que sugiere que el módulo está enviando o recibiendo datos predefinidos. El contador de bits (counter_bit) indica la posición actual de la transmisión, con valores que van desde A01 hasta Y21, representando posiblemente un flujo de datos de 16 bits seguido de bits adicionales (hasta 21).
+Dato enviado (MOSI): 9 (0x09 en hexadecimal, 00001001 en binario).
 
-El testbench busca validar que:
+Dato recibido (MISO): 169 (0xA9 en hexadecimal, 10101001 en binario).
 
-Los datos se transmiten correctamente en orden MSB primero.
-
-El reloj (SCK) y las señales de control (SS) se generan según el modo SPI 2.
-
-Las señales MISO/MOSI sincronizan correctamente con los flancos del reloj.
-
-El contador de bits refleja el avance esperado en la transmisión.
+La señal SCK (reloj) sincroniza la transferencia bit a bit, comenzando por el LSB. El valor 9 se envía por MOSI (desglosado como 1-0-0-1-0-0-0-0 en orden LSB), mientras que el esclavo responde con 169 (bitstream 1-0-1-0-1-0-0-1). La señal SS (slave select) se mantiene baja durante la transmisión, y IRQ_SPI se activa al finalizar. El contador (counter_bit) confirma la transferencia de los 8 bits. Esta prueba valida la correcta configuración del modo SPI y la integridad de los datos en ambas direcciones.
 
 SPI_MODE = 10 = modo 2
 SPI_DATA_LEN = 01 = 16bits

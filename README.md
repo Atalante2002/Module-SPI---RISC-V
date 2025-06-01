@@ -105,17 +105,13 @@ SPI_ORDER = 0 = LSB primero
 
 ![image](https://github.com/user-attachments/assets/7bf074f1-1f5a-4c03-89de-a0b447267194)
 
-El testbench verifica el módulo SPI en modo 2 (CPOL=1, CPHA=1), con transmisión de 16 bits y orden LSB primero. Se analizan señales clave como:
+El testbench muestra una comunicación SPI en modo 0 (CPOL=0, CPHA=0) donde se transmiten 8 bits en orden LSB primero. Según los datos observados:
 
-SCLK: Reloj con polaridad invertida (CPOL=1) y datos capturados en flanco de bajada (CPHA=1).
+Dato enviado (MOSI): 9 (0x09 en hexadecimal, 00001001 en binario).
 
-MOSI/MISO: Datos enviados/recibidos bit a bit, empezando por el LSB.
+Dato recibido (MISO): 169 (0xA9 en hexadecimal, 10101001 en binario).
 
-SS: Señal de selección activa en bajo.
-
-SPI_DATA_IN/OUT: Datos de entrada (16 bits) y salida (16 bits) del módulo.
-
-El objetivo es validar la sincronización, integridad de datos y temporización en este modo SPI.
+La señal SCK (reloj) sincroniza la transferencia bit a bit, comenzando por el LSB. El valor 9 se envía por MOSI (desglosado como 1-0-0-1-0-0-0-0 en orden LSB), mientras que el esclavo responde con 169 (bitstream 1-0-1-0-1-0-0-1). La señal SS (slave select) se mantiene baja durante la transmisión, y IRQ_SPI se activa al finalizar. El contador (counter_bit) confirma la transferencia de los 8 bits. Esta prueba valida la correcta configuración del modo SPI y la integridad de los datos en ambas direcciones.
 
 SPI_MODE = 01 = modo 1
 SPI_DATA_LEN = 11 = 32bits

@@ -99,19 +99,44 @@ Con el fin de validar el correcto funcionamiento del módulo SPI desarrollado, s
 
 la siguiente prueba tiene los siguientes parametros:
 
+Configuración del protocolo:
 SPI_MODE = 00 = modo 0
 SPI_DATA_LEN = 00 = 8bits
 SPI_ORDER = 0 = LSB primero
 
 ![image](https://github.com/user-attachments/assets/7bf074f1-1f5a-4c03-89de-a0b447267194)
 
-El testbench muestra una comunicación SPI en modo 0 (CPOL=0, CPHA=0) donde se transmiten 8 bits en orden LSB primero. Según los datos observados:
+Datos transmitidos y recibidos:
 
-Dato enviado (MOSI): 9 (0x09 en hexadecimal, 00001001 en binario).
+Primer byte (Time 000-005):
 
-Dato recibido (MISO): 169 (0xA9 en hexadecimal, 10101001 en binario).
+MOSI (Tx): 9 (hex 0x09, binario 00001001). Se envía como secuencia serial: 1 (LSB), 0, 0, 1, 0, 0, 0, 0.
 
-La señal SCK (reloj) sincroniza la transferencia bit a bit, comenzando por el LSB. El valor 9 se envía por MOSI (desglosado como 1-0-0-1-0-0-0-0 en orden LSB), mientras que el esclavo responde con 169 (bitstream 1-0-1-0-1-0-0-1). La señal SS (slave select) se mantiene baja durante la transmisión, y IRQ_SPI se activa al finalizar. El contador (counter_bit) confirma la transferencia de los 8 bits. Esta prueba valida la correcta configuración del modo SPI y la integridad de los datos en ambas direcciones.
+MISO (Rx): 9 (mismo valor, posible eco de prueba).
+
+Segundo byte (Time 105-107):
+
+MOSI (Tx): 169 (hex 0xA9, binario 10101001). Secuencia serial: 1, 0, 0, 1, 0, 1, 0, 1.
+
+MISO (Rx): 169 (confirmación).
+
+Señales de control:
+
+SCK: Reloj generado en modo 0 (inactivo en bajo, datos válidos en flancos de subida).
+
+SS: Línea activa en bajo durante ambas transferencias.
+
+IRQ_SPI: Pulso al final de cada transmisión (no visible en los tiempos mostrados).
+
+Contador (counter_bit): Aumenta de 0 a 7 por cada byte, validando los 8 bits.
+
+Observaciones:
+
+Los valores 000, 005, 105, 107 son marcas de tiempo (en ns o ciclos).
+
+Los datos en SPI_DATA_IN y SPI_DATA_OUT no son legibles en la imagen (posiblemente ruido o formato corrupto).
+
+La prueba confirma el funcionamiento básico del modo SPI 0 con datos full-duplex.
 
 SPI_MODE = 01 = modo 1
 SPI_DATA_LEN = 11 = 32bits

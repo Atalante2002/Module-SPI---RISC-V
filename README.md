@@ -99,11 +99,12 @@ Con el fin de validar el correcto funcionamiento del módulo SPI desarrollado, s
 
 la siguiente prueba tiene los siguientes parametros:
 
-SPI_MODE = 10 = modo 2
-SPI_DATA_LEN = 01 = 16bits
+SPI_MODE = 00 = modo 0
+SPI_DATA_LEN = 00 = 8bits
 SPI_ORDER = 0 = LSB primero
 
-![image](https://github.com/user-attachments/assets/67ea88f4-58aa-403c-aa7e-86d95f76ba8b)
+![image](https://github.com/user-attachments/assets/3e3bdaa5-bde8-426f-b9ad-a875d007ffa0)
+
 
 El testbench verifica el módulo SPI en modo 2 (CPOL=1, CPHA=1), con transmisión de 16 bits y orden LSB primero. Se analizan señales clave como:
 

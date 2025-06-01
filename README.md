@@ -90,7 +90,11 @@ Elementos pendientes o en desarrollo futuro:
 
 En el desarrollo de este módulo SPI, se ha cubierto satisfactoriamente la funcionalidad esencial del protocolo SPI en modo maestro, integrándose con el procesador RISC-V mediante una interfaz de memoria mapeada y generando las señales estándar del protocolo. Además, se ha diseñado una FSM robusta y se han contemplado mecanismos de control y señalización como interrupciones.
 
+La vista RTL presentada corresponde a la estructura jerárquica del módulo SPI en su integración con el procesador RISC-V y otros componentes internos. En esta representación se identifican claramente los bloques funcionales principales y la interconexión de señales de control, datos y sincronización. El bloque central del diseño, encargado del control SPI, recibe señales como SPI_CTRL, clk_cpu, rst, load_data, y clk_divider, y genera señales esenciales como SCK, SS, IRQ_SPI, y done.
 
+Se observan módulos auxiliares como el registro de desplazamiento (piso/sipo SPI), responsable de manejar las líneas de datos MOSI y MISO, el cual se conecta directamente al módulo controlador para intercambiar datos (data_in, data_out) y sincronizarse con el reloj SPI. También se visualiza un módulo divisor de reloj (clock_divider) que toma el reloj del CPU y genera la señal SCK de acuerdo con la velocidad configurada en el registro SPI_BITRATE. El sistema cuenta con rutas de datos de 32 bits para SPI_DATA_IN, SPI_DATA_OUT y control de carga de datos, lo cual permite transmitir palabras completas al periférico SPI. El control de longitud de palabra (SPI_DATA_LEN) permite adaptar el tamaño de las transferencias.
+
+En conjunto, esta vista RTL permite verificar que el diseño cumple con una estructura modular clara, facilitando tanto la verificación como su posterior síntesis. Las conexiones están organizadas para soportar modos de operación programables y un flujo de datos eficiente entre el CPU, el controlador SPI, y el registro de desplazamiento
 
 ![image](https://github.com/user-attachments/assets/6629d331-eab4-4dbc-8556-9ee17fc361d6)
 

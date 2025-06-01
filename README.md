@@ -14,10 +14,6 @@ Inicialmente se diseñó la parte de la lógica de la comunicación, la cual se 
 
 ![image](https://github.com/user-attachments/assets/9d1b18b1-f243-4411-8b0e-b84085ba6d4e)
 
-![image](https://github.com/user-attachments/assets/6629d331-eab4-4dbc-8556-9ee17fc361d6)
-
-
-
 Primero se desarrolló un módulo para dividir la frecuencia del reloj de la CPU con el fin de generar el reloj interno SCK, el cual debe tener una frecuencia menor y ajustable por el usuario. Este módulo implementa un reloj SPI configurable mediante el uso de un divisor de frecuencia (Divider_clock_SPI), que ajusta la velocidad de comunicación (SCK) en función de la señal SPI_BITRATE y el reloj principal del sistema (clk_cpu). El diseño cumple con el requerimiento de frecuencia configurable al permitir:  
 
 1.Control flexible: La señal SPI_BITRATE define el divisor de frecuencia, adaptando la velocidad del reloj SPI (SCK) a diferentes necesidades del protocolo.  
@@ -94,10 +90,9 @@ Elementos pendientes o en desarrollo futuro:
 
 En el desarrollo de este módulo SPI, se ha cubierto satisfactoriamente la funcionalidad esencial del protocolo SPI en modo maestro, integrándose con el procesador RISC-V mediante una interfaz de memoria mapeada y generando las señales estándar del protocolo. Además, se ha diseñado una FSM robusta y se han contemplado mecanismos de control y señalización como interrupciones.
 
-Añasir información sobre vista RTL
 
 
-
+![image](https://github.com/user-attachments/assets/6629d331-eab4-4dbc-8556-9ee17fc361d6)
 
 Con el fin de validar el correcto funcionamiento del módulo SPI desarrollado, se diseñaron y ejecutaron una serie de pruebas mediante testbenchs escritos en Verilog. Estas pruebas permiten verificar de forma controlada el comportamiento del módulo bajo diferentes condiciones operativas, asegurando que se cumplan los requerimientos funcionales establecidos en la especificación. En particular, se evaluaron los distintos modos de operación del protocolo SPI definidos por la configuración de las señales CPOL (Clock Polarity) y CPHA (Clock Phase), los cuales afectan la sincronización de los datos en las líneas MOSI y MISO respecto a los flancos del reloj serial SCLK. Para cada modo, se simularon escenarios completos de transmisión y recepción de datos, observando la integridad del flujo de información, la correcta activación de señales de control como SS, y la generación oportuna de señales de estado como done e irq_spi. Estas pruebas resultan fundamentales no solo para validar la lógica interna del sistema, sino también para asegurar su integridad temporal de cara a una futura síntesis física o implementación en FPGA o ASIC.
 

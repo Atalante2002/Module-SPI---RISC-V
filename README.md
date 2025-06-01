@@ -103,8 +103,7 @@ SPI_MODE = 00 = modo 0
 SPI_DATA_LEN = 00 = 8bits
 SPI_ORDER = 0 = LSB primero
 
-![image](https://github.com/user-attachments/assets/3e3bdaa5-bde8-426f-b9ad-a875d007ffa0)
-
+![image](https://github.com/user-attachments/assets/7bf074f1-1f5a-4c03-89de-a0b447267194)
 
 El testbench verifica el módulo SPI en modo 2 (CPOL=1, CPHA=1), con transmisión de 16 bits y orden LSB primero. Se analizan señales clave como:
 

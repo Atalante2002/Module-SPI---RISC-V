@@ -14,6 +14,9 @@ Inicialmente se diseñó la parte de la lógica de la comunicación, la cual se 
 
 ![image](https://github.com/user-attachments/assets/9d1b18b1-f243-4411-8b0e-b84085ba6d4e)
 
+![image](https://github.com/user-attachments/assets/dac48b92-cffb-46c5-81ba-047118a9135b)
+
+
 Primero se desarrolló un módulo para dividir la frecuencia del reloj de la CPU con el fin de generar el reloj interno SCK, el cual debe tener una frecuencia menor y ajustable por el usuario. Este módulo implementa un reloj SPI configurable mediante el uso de un divisor de frecuencia (Divider_clock_SPI), que ajusta la velocidad de comunicación (SCK) en función de la señal SPI_BITRATE y el reloj principal del sistema (clk_cpu). El diseño cumple con el requerimiento de frecuencia configurable al permitir:  
 
 1.Control flexible: La señal SPI_BITRATE define el divisor de frecuencia, adaptando la velocidad del reloj SPI (SCK) a diferentes necesidades del protocolo.  

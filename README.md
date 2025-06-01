@@ -197,10 +197,5 @@ Formato de datos: Correcta transmisión bit a bit comenzando por el MSB.
 Señales de control: Comportamiento de la línea SS (selección de esclavo).
 
 
-
-![image](https://github.com/user-attachments/assets/7f7ee0a1-acb6-4cdc-895d-dc1c9d04baee)
-
-
-
-
+![image](https://github.com/user-attachments/assets/c58cb935-acfe-45b8-9d65-aee5bca255a2)
 

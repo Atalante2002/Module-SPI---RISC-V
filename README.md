@@ -104,8 +104,7 @@ SPI_MODE = 00 = modo 0
 SPI_DATA_LEN = 00 = 8bits
 SPI_ORDER = 0 = LSB primero
 
-![image](https://github.com/user-attachments/assets/3abf7660-a095-4d5f-afe4-4ceebb18e71c)
-
+![image](https://github.com/user-attachments/assets/d5049f00-07bd-4301-9115-7c67c45fe77a)
 
 Datos transmitidos y recibidos:
 

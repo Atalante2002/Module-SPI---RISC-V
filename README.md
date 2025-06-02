@@ -61,16 +61,6 @@ Transmisión Full-Duplex:
 
 El módulo SPI lee (SPI_DATA_IN) y escribe (SPI_DATA_OUT) simultáneamente.
 
-Flujo de operación:
-
-Paso 1: Escribir datos en SPI_DATA_OUT.
-
-Paso 2: Activar SPI_START = 1 (inicia transmisión).
-
-Paso 3: Esperar a que SPI_START = 0 (transmisión completada).
-
-Paso 4: Leer SPI_DATA_IN para obtener los datos recibidos.
-
 El presente repositorio contiene la información y archivos desarrollados respecto del módulo para la comunicación SPI descripto en Verilog, además de los archivos generados en la síntesis por la herramienta Openlane.
 
 Se definieron dos partes fundamentales en el diseño del módulo para la comunicación SPI, la primera realiza toda la lógica de la comunicación donde aparte de mandar y recibir datos simultáneamente se debe configurar todos los parámetros según el registro de control y bitrate, la segunda parte se encarga de controlar los registros según el usuario.
@@ -117,6 +107,16 @@ Los registros y el protocolo de bit durante la lectura y escritura son los sigui
 Representación Máquina de estados Mealy
 
 ![image](https://github.com/user-attachments/assets/a8059fd4-cb07-4bc9-abd7-bc1f7306d4a3)
+
+Flujo de operación:
+
+Paso 1: Escribir datos en SPI_DATA_OUT.
+
+Paso 2: Activar SPI_START = 1 (inicia transmisión).
+
+Paso 3: Esperar a que SPI_START = 0 (transmisión completada).
+
+Paso 4: Leer SPI_DATA_IN para obtener los datos recibidos.
 
 La máquina de estados describe el flujo de control de un módulo SPI con los siguientes estados y transiciones:
 

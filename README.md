@@ -132,12 +132,11 @@ Configuración del protocolo:
 
 SPI_MODE = 01 = modo 3
 SPI_DATA_LEN = 11 = 32bits
-SPI_ORDER = 1 = LSB primero
+SPI_ORDER = 1 = MSB primero
 
 ![image](https://github.com/user-attachments/assets/ce25397a-1401-4f99-bc59-44168a6ce1d4)
 
-
-El testbench muestra una comunicación SPI en modo 0 (CPOL=0, CPHA=0) donde se transmiten 8 bits en orden LSB primero. Según los datos observados:
+El testbench muestra una comunicación SPI en modo 0 (CPOL=0, CPHA=0) donde se transmiten 11 bits en orden MSB primero. Según los datos observados:
 
 Dato enviado (MOSI): 9 (0x09 en hexadecimal, 00001001 en binario).
 

@@ -115,7 +115,7 @@ Primer byte (Time 000-005):
 
 MOSI (Tx): 9 (hex 0x09, binario 00001001). Se envía como secuencia serial: 1 (LSB), 0, 0, 1, 0, 0, 0, 0.
 
-MISO (Rx): 11 (hex 0xB, binario 01011).
+MISO (Rx): 26 (hex 0xB, binario 000011010).
 
 Segundo byte (Time 105-107):
 

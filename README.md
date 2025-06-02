@@ -245,7 +245,7 @@ En comparación con las estrategias de tipo DELAY, si bien todas ellas lograron 
 
 Este perfil de síntesis fue utilizado como base para la generación del layout final del módulo, garantizando su integración eficiente dentro de un sistema RISC-V y facilitando la implementación en flujos de diseño digital como OpenLane.
 
-Acontinuación se presenta la ilustración correspondiente al Layout de nuestro módulo SPI:
+Acontinuación se presenta la ilustración correspondiente al Layout de nuestro módulo SPI visualizado desde Klayout:
 
 ![image](https://github.com/user-attachments/assets/a6801ed6-47d6-47d4-bf5f-68412c0d2017)
 

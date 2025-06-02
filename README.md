@@ -162,40 +162,6 @@ SPI_MODE = 10 = modo 2
 SPI_DATA_LEN = 01 = 16bits
 SPI_ORDER = 1 = MSB primero
 
-![image](https://github.com/user-attachments/assets/4c3030c3-fa12-4bb9-8e54-e83200621b2c)
-
-Este testbench verifica el módulo SPI en **modo 2 (CPOL=1, CPHA=1)**, transmitiendo **16 bits en orden MSB primero**. Las señales clave analizadas son **MISO** (entrada), **MOSI** (salida), **SCK** (reloj con polaridad invertida) y **SS** (selección de esclavo). Los registros muestran **SPI_DATA_IN** con valores como `0x00000000` y `0x00000001`, mientras que **SPI_DATA_OUT** mantiene un valor fijo (`0x00010003`), lo que sugiere una prueba de transmisión constante o un registro de salida predefinido. El **contador de bits (counter_bit)** no sigue un patrón claro, repitiendo valores como `00000001`, lo que podría indicar un error en la simulación o una captura incompleta. El objetivo es validar la sincronización y el formato de datos en este modo.
-
-SPI_MODE = 10 = modo 2
-SPI_DATA_LEN = 11 = 32bits
-SPI_ORDER = 0 = LSB primero
-
-![image](https://github.com/user-attachments/assets/282bb9ee-6dbc-441c-8c7e-91bdcd3dbaa8)
-
-Este testbench evalúa una comunicación SPI configurada en modo 2 (CPOL=1, CPHA=1), transmitiendo datos de 32 bits con orden LSB primero. Se analizan las señales típicas del protocolo (MOSI, MISO, reloj y selección de esclavo) para verificar la correcta sincronización y transferencia de información.
-
-El módulo procesa datos de entrada y genera salidas, mostrando un comportamiento secuencial acorde al modo SPI configurado. El testbench comprueba principalmente:
-
-La alineación temporal de las señales con el reloj en modo 2
-
-El orden correcto de bits (LSB primero)
-
-La integridad en la transferencia de 32 bits
-
-SPI_MODE = 11 = modo 3
-SPI_DATA_LEN = 01 = 16bits
-SPI_ORDER = 1 = MSB primero
-
-![image](https://github.com/user-attachments/assets/83265d00-64d3-49db-887f-25487299eb52)
-
-Este testbench evalúa el módulo SPI configurado en modo 3 (CPOL=1, CPHA=0), transmitiendo 16 bits con orden MSB primero. La prueba verifica:
-
-Temporización: Sincronización entre datos (MOSI/MISO) y el reloj (SCK) en modo 3.
-
-Formato de datos: Correcta transmisión bit a bit comenzando por el MSB.
-
-Señales de control: Comportamiento de la línea SS (selección de esclavo).
-
 Como parte del proceso de síntesis del módulo SPI diseñado para integración con un microcontrolador RISC-V, se evaluaron diversas estrategias de optimización, considerando tanto la minimización del área como la mejora del desempeño temporal. Se aplicaron ocho estrategias de síntesis distintas, agrupadas en dos enfoques principales: orientadas a área (AREA 0–3) y orientadas a retardo (DELAY 0–4). Para cada estrategia se obtuvieron métricas clave como el número total de compuertas lógicas (Gates), el área total ocupada (Area µm²), el peor caso de setup slack (Worst Setup Slack) y la suma total de setup slack negativo (Total -ve Setup Slack), que indica violaciones de temporización.
 
 ![image](https://github.com/user-attachments/assets/c58cb935-acfe-45b8-9d65-aee5bca255a2)

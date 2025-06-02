@@ -200,9 +200,11 @@ Como parte del proceso de síntesis del módulo SPI diseñado para integración 
 
 ![image](https://github.com/user-attachments/assets/c58cb935-acfe-45b8-9d65-aee5bca255a2)
 
-Entre las estrategias aplicadas, se identificó que la estrategia AREA 0 fue la más eficiente en términos de área, ocupando únicamente 8,389.29 µm² con 763 compuertas, aunque presentó una violación de temporización con un worst setup slack de –1.54 ns. En contraste, la estrategia DELAY 3 logró el mejor resultado global, al mantener una temporización completamente positiva (worst slack = 4.54 ns) y eliminar todas las violaciones de setup (Total –ve Slack = 0.0 ns), con un costo en área más elevado (10,037.13 µm²). Por su parte, la estrategia AREA 3, que prioriza la reducción de área agresiva, produjo el mayor número de compuertas (1,287) y el área más extensa (11,268.31 µm²), además de presentar la peor violación de temporización (–4.24 ns).
+La estrategia seleccionada para la implementación final fue AREA 3, la cual logró un balance entre compacidad del diseño y cumplimiento de temporización. Esta estrategia generó un circuito con 1210 compuertas y un área total de 11,282.07 µm², garantizando un desempeño temporal adecuado con un worst setup slack de +5.86 ns y sin violaciones de tiempo (Total -ve Setup Slack = 0.0 ns). A pesar de que otras estrategias (AREA 2, por ejemplo) ofrecieron un área ligeramente menor (8548.19 µm² con 777 compuertas), presentaron violaciones severas de tiempo (–5.35 ns), lo cual comprometería la confiabilidad del sistema.
 
-Con base en este análisis, se concluye que la estrategia DELAY 3 representa el punto óptimo de compromiso entre área y desempeño temporal, asegurando la viabilidad del diseño para etapas posteriores como place & route sin violaciones críticas de tiempo. Este perfil de síntesis fue seleccionado como base para la generación del layout físico, garantizando coherencia con el sistema propuesto y la operatividad confiable del módulo dentro del sistema RISC-V.
+En comparación con las estrategias de tipo DELAY, si bien todas ellas lograron eliminar violaciones de tiempo, lo hicieron a costa de un incremento considerable en área, con valores que alcanzan hasta 11,013.06 µm² (DELAY 1). Por ello, se determinó que AREA 3 representa la mejor opción global, al satisfacer las restricciones temporales y mantener el área dentro de límites aceptables para la implementación física del chip.
+
+Este perfil de síntesis fue utilizado como base para la generación del layout final del módulo, garantizando su integración eficiente dentro de un sistema RISC-V y facilitando la implementación en flujos de diseño digital como OpenLane.
 
 
 

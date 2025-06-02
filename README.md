@@ -91,7 +91,7 @@ Al tener estos dos módulos se realiza una máquina de estados, la cual se encar
 
 El módulo SPI_Controller es la unidad de control secuencial del sistema SPI Master, responsable de coordinar el proceso de comunicación con dispositivos esclavos SPI. En esta versión, se implementa como una máquina de estados finitos (FSM) tipo Mealy, lo cual permite generar salidas que dependen tanto del estado actual como de las entradas del sistema.
 
-![image](https://github.com/user-attachments/assets/a554dbdf-39cc-491a-9c18-b19dbbb6e34c)
+![image](https://github.com/user-attachments/assets/3462f697-143c-4b52-a792-f34f30ca7476)
 
 El módulo **PISO_SIPO** es un componente fundamental para la comunicación **SPI full-duplex**, encargado de realizar la conversión entre datos paralelos y seriales de forma bidireccional. Durante la transmisión, toma un bloque de datos en paralelo (como un valor de 8, 16 o 32 bits) y lo convierte en una secuencia de bits que se envía de manera serial a través de la línea **MOSI**, siguiendo la configuración de longitud definida en **SPI_DATA_LEN**. Simultáneamente, en la recepción, captura los bits entrantes desde la línea **MISO** y los reconstruye en un dato paralelo, listo para ser leído por el sistema. Gestiona la sincronización mediante señales de control que indican cuándo cargar nuevos datos y cuándo la operación ha finalizado, asegurando una transferencia precisa y eficiente. Este módulo es esencial para integrar periféricos SPI en sistemas digitales, permitiendo una comunicación flexible y adaptable a diferentes tamaños de datos.
 

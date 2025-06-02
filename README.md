@@ -102,7 +102,7 @@ Los registros y el protocolo de bit durante la lectura y escritura son los sigui
 3. El usuario establece la bandera SPI_START en el SPI_CTRL para realizar la transmisión. Esta acción se realiza en un ciclo de lectura y escritura proporcionando transmisión full-duplex.
 4. El módulo SPI limpia la bandera SPI_START cuando la transmsión es completada y genera una solicitud de interrupción si fue habilitada.
 5. Los pasos 2 y 3 se repiten para todos los datos en la trama.
-6. El usaurio limpia la bandera SPI_FRAME_START en el registro SPI_CTRL para detener la trama. Esta acción retorna las lineas MOSI, SCLK, and SS lines a sus estados de inactividad de acuerdo al mode seleccionado.
+6. El usaurio limpia la bandera SPI_FRAME_START en el registro SPI_CTRL para detener la trama. Esta acción retorna las lineas MOSI, SCLK, and SS lines a sus estados de inactividad de acuerdo al modo seleccionado.
 
 Representación Máquina de estados Mealy
 

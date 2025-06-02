@@ -136,7 +136,7 @@ SPI_ORDER = 1 = MSB primero
 
 ![image](https://github.com/user-attachments/assets/ce25397a-1401-4f99-bc59-44168a6ce1d4)
 
-El testbench muestra una comunicación SPI en modo 3 (CPOL=0, CPHA=0) donde se transmiten 32 bits en orden MSB primero. Según los datos observados:
+El testbench muestra una comunicación SPI en modo 3 donde se transmiten 32 bits en orden MSB primero. Según los datos observados:
 
 Dato recibido (MOSI): 2147483661 (0x8000000D en hexadecimal, 10000000000000000000000000001101 en binario).
 

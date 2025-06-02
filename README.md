@@ -167,12 +167,6 @@ Dato enviado (MISO): 851987 (0xD0013 en hexadecimal, 011010000000000010011 en bi
 
 La señal SCK (reloj) sincroniza la transferencia bit a bit, comenzando por el MSB. El valor 851987 se envía por MOSI, mientras que el esclavo responde con 2147483661. La señal SS (slave select) se mantiene baja durante la transmisión, y IRQ_SPI se activa al finalizar. El contador (counter_bit) confirma la transferencia de los 32 bits. Esta prueba valida la correcta configuración del modo SPI y la integridad de los datos en ambas direcciones.
 
-SPI_MODE = 10 = modo 2
-SPI_DATA_LEN = 01 = 16bits
-SPI_ORDER = 1 = MSB primero
-
-Como parte del proceso de síntesis del módulo SPI diseñado para integración con un microcontrolador RISC-V, se evaluaron diversas estrategias de optimización, considerando tanto la minimización del área como la mejora del desempeño temporal. Se aplicaron ocho estrategias de síntesis distintas, agrupadas en dos enfoques principales: orientadas a área (AREA 0–3) y orientadas a retardo (DELAY 0–4). Para cada estrategia se obtuvieron métricas clave como el número total de compuertas lógicas (Gates), el área total ocupada (Area µm²), el peor caso de setup slack (Worst Setup Slack) y la suma total de setup slack negativo (Total -ve Setup Slack), que indica violaciones de temporización.
-
 ![image](https://github.com/user-attachments/assets/c58cb935-acfe-45b8-9d65-aee5bca255a2)
 
 La estrategia seleccionada para la implementación final fue AREA 3, la cual logró un balance entre lo compacto del diseño y cumplimiento de temporización. Esta estrategia generó un circuito con 1210 compuertas y un área total de 11,282.07 µm², garantizando un desempeño temporal adecuado con un worst setup slack de +5.86 ns y sin violaciones de tiempo (Total -ve Setup Slack = 0.0 ns). A pesar de que otras estrategias (AREA 2, por ejemplo) ofrecieron un área ligeramente menor (8548.19 µm² con 777 compuertas), presentaron violaciones severas de tiempo (–5.35 ns), lo cual comprometería la confiabilidad del sistema.

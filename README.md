@@ -125,21 +125,8 @@ MISO (Rx): 33 (hex 0x21, binario 00010001).
 
 Señales de control:
 
-SCK: Reloj generado en modo 0 (inactivo en bajo, datos válidos en flancos de subida).
-
-SS: Línea activa en bajo durante ambas transferencias.
-
-IRQ_SPI: Pulso al final de cada transmisión (no visible en los tiempos mostrados).
-
 Contador (counter_bit): Aumenta de 0 a 7 por cada byte, validando los 8 bits.
 
-Observaciones:
-
-Los valores 000, 005, 105, 107 son marcas de tiempo (en ns o ciclos).
-
-Los datos en SPI_DATA_IN y SPI_DATA_OUT nos permiten evidenciar los datos de entrada y salida.
-
-La prueba confirma el funcionamiento básico del modo SPI 0 con datos full-duplex.
 
 Configuración del protocolo:
 

@@ -16,7 +16,60 @@ Clock Polarity (CPOL)
 CPOL = 1: La señal SCLK está arriba (1) cuando está inactiva
 CPOL = 0: La señal SCLK está abajo (0) cuando está inactiva
 
+Registros del Módulo SPI
+1. SPI_BITRATE (32 bits)
+Descripción: Divisor de reloj para generar la velocidad de transmisión deseada.
 
+Fórmula:
+
+Reloj_SPI = FACTOR × Reloj_CPU / SPI_BITRATE
+Uso: Configura la frecuencia de operación del SPI (ej: para 1 MHz, ajustar SPI_BITRATE según la frecuencia de la CPU).
+
+2. SPI_DATA_OUT (32 bits)
+Descripción: Registro de escritura. Contiene los datos a transmitir al dispositivo esclavo.
+
+Formato: Soporta valores de 8, 16, 24 o 32 bits.
+
+Uso:
+
+Escribir aquí los datos antes de iniciar la transmisión (activando SPI_START en SPI_CTRL).
+
+3. SPI_DATA_IN (32 bits)
+Descripción: Registro de lectura. Almacena el último dato recibido del esclavo.
+
+Condiciones:
+
+Solo debe leerse cuando el flag SPI_START (en SPI_CTRL) esté en 0 (transmisión completada).
+
+Leer durante una transmisión (SPI_START = 1) devuelve valores inválidos.
+
+4. SPI_CTRL (8 bits)
+Descripción: Registro de control y estado.
+
+Funciones clave:
+
+SPI_START:
+
+1: Inicia una transmisión full-duplex (lectura/escritura simultánea).
+
+0: Indica que la transmisión ha finalizado.
+
+Otros bits: Configuran modo SPI (CPOL/CPHA), tamaño de dato, etc.
+
+Notas importantes
+Transmisión Full-Duplex:
+
+El módulo SPI lee (SPI_DATA_IN) y escribe (SPI_DATA_OUT) simultáneamente.
+
+Flujo de operación:
+
+Paso 1: Escribir datos en SPI_DATA_OUT.
+
+Paso 2: Activar SPI_START = 1 (inicia transmisión).
+
+Paso 3: Esperar a que SPI_START = 0 (transmisión completada).
+
+Paso 4: Leer SPI_DATA_IN para obtener los datos recibidos.
 
 El presente repositorio contiene la información y archivos desarrollados respecto del módulo para la comunicación SPI descripto en Verilog, además de los archivos generados en la síntesis por la herramienta Openlane.
 

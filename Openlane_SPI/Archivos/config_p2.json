@@ -1,0 +1,11 @@
+{
+	"DESIGN_NAME": "spi_logic_master",
+	"VERILOG_FILES": ["dir::src/spi_logic_control.v","dir::src/piso_sipo.v","dir::src/divider_clock_spi.v","dir::src/spi_data_order.v","dir::src/spi_logic_master.v"],
+	"CLOCK_PORT": "clk_cpu",
+	"FP_SIZING": "relative",
+	"FP_CORE_UTIL": 45,
+	"PNR_SDC_FILE" : "dir::src/counter.sdc",
+	"SIGNOFF_SDC_FILE" : "dir::src/counter.sdc",
+	"SYNTH_STRATEGY" : "AREA 3",
+	"CLOCK_PERIOD": 5.0
+}

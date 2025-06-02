@@ -138,9 +138,9 @@ SPI_ORDER = 1 = MSB primero
 
 El testbench muestra una comunicación SPI en modo 3 (CPOL=0, CPHA=0) donde se transmiten 32 bits en orden MSB primero. Según los datos observados:
 
-Dato enviado (MOSI): 851987 (0xD0013 en hexadecimal, 011010000000000010011 en binario).
+Dato recibido (MOSI): 2147483661 (0x8000000D en hexadecimal, 10000000000000000000000000001101 en binario).
 
-Dato recibido (MISO): 2147483661 (0x8000000D en hexadecimal, 10000000000000000000000000001101 en binario).
+Dato enviado (MISO): 851987 (0xD0013 en hexadecimal, 011010000000000010011 en binario).
 
 La señal SCK (reloj) sincroniza la transferencia bit a bit, comenzando por el MSB. El valor 851987 se envía por MOSI, mientras que el esclavo responde con 2147483661. La señal SS (slave select) se mantiene baja durante la transmisión, y IRQ_SPI se activa al finalizar. El contador (counter_bit) confirma la transferencia de los 32 bits. Esta prueba valida la correcta configuración del modo SPI y la integridad de los datos en ambas direcciones.
 

@@ -196,6 +196,15 @@ Formato de datos: Correcta transmisión bit a bit comenzando por el MSB.
 
 Señales de control: Comportamiento de la línea SS (selección de esclavo).
 
+Como parte del proceso de síntesis del módulo SPI diseñado para integración con un microcontrolador RISC-V, se evaluaron diversas estrategias de optimización, considerando tanto la minimización del área como la mejora del desempeño temporal. Se aplicaron ocho estrategias de síntesis distintas, agrupadas en dos enfoques principales: orientadas a área (AREA 0–3) y orientadas a retardo (DELAY 0–4). Para cada estrategia se obtuvieron métricas clave como el número total de compuertas lógicas (Gates), el área total ocupada (Area µm²), el peor caso de setup slack (Worst Setup Slack) y la suma total de setup slack negativo (Total -ve Setup Slack), que indica violaciones de temporización.
 
 ![image](https://github.com/user-attachments/assets/c58cb935-acfe-45b8-9d65-aee5bca255a2)
+
+Entre las estrategias aplicadas, se identificó que la estrategia AREA 0 fue la más eficiente en términos de área, ocupando únicamente 8,389.29 µm² con 763 compuertas, aunque presentó una violación de temporización con un worst setup slack de –1.54 ns. En contraste, la estrategia DELAY 3 logró el mejor resultado global, al mantener una temporización completamente positiva (worst slack = 4.54 ns) y eliminar todas las violaciones de setup (Total –ve Slack = 0.0 ns), con un costo en área más elevado (10,037.13 µm²). Por su parte, la estrategia AREA 3, que prioriza la reducción de área agresiva, produjo el mayor número de compuertas (1,287) y el área más extensa (11,268.31 µm²), además de presentar la peor violación de temporización (–4.24 ns).
+
+Con base en este análisis, se concluye que la estrategia DELAY 3 representa el punto óptimo de compromiso entre área y desempeño temporal, asegurando la viabilidad del diseño para etapas posteriores como place & route sin violaciones críticas de tiempo. Este perfil de síntesis fue seleccionado como base para la generación del layout físico, garantizando coherencia con el sistema propuesto y la operatividad confiable del módulo dentro del sistema RISC-V.
+
+
+
+
 

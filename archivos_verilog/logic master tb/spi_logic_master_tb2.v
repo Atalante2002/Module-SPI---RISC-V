@@ -1,4 +1,4 @@
-module spi_logic_control_tb1;
+module spi_logic_control_tb2;
 	reg clk_cpu;
 	reg rst;
 	reg [31:0] SPI_BITRATE;
@@ -48,25 +48,42 @@ module spi_logic_control_tb1;
 	   
 	   #100;
 	   rst = 0;
-	   SPI_CTRL = 9'b011111101;
+	   SPI_CTRL = 9'b000100101;
 	   #100;
-	   SPI_CTRL = 9'b111111101;
-	   SPI_DATA_OUT = 2147483661;
+	   SPI_CTRL = 9'b100100101;
+	   SPI_DATA_OUT = 9;
 	   #100;
-	   SPI_CTRL = 9'b111111111;
+	   SPI_CTRL = 9'b100100111;
+	   //#30 //SPI_CTRL = 9'b000000000;
 	   #50 MISO = 1;
+	   //SPI_CTRL = 9'b100001100;
 	   #50 MISO = 0;
 	   #50 MISO = 1;
 	   #50 MISO = 0;
-	   SPI_CTRL = 9'b111111101;
+	   SPI_CTRL = 9'b100100101;
 	   #400;
+	   SPI_DATA_OUT = 169;
+	   SPI_CTRL = 9'b100100111;
 	   #25 MISO = 1;
 	   #30 MISO = 0;
 	   #25 MISO = 1;
 	   #30 MISO = 0;
+	   SPI_CTRL = 9'b100100101;
 	   #100 MISO = 1;
 	   #50 MISO = 0;
-	   #1000;
-	   $finish;
+	   #600;
+	   /*
+	   #500 SPI_CTRL = 9'b100000110;
+	   SPI_DATA_OUT = 2147483649;
+	   #500 SPI_CTRL = 9'b000000100;
+	   #3000;
+	   */
+	   //SPI_DATA_OUT = 0;
+	   //SPI_CTRL = 9'b000000000;
+	   //SPI_CTRL = 9'b000000000;
+
+	   //SPI_BITRATE = 10;
+	   //SPI_CTRL = 9'b011000000;
+	   	$finish;
 	end
 endmodule

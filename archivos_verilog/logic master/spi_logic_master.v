@@ -22,7 +22,6 @@ module spi_logic_master(
 	wire en_SCK;
 	wire [1:0] SPI_DATA_LEN;
 	
-	wire load_data_in;
 	wire [31:0] SPI_DATA_IN_I;
 	
 	
@@ -43,8 +42,7 @@ module spi_logic_master(
 		.MISO(MISO),
 		.done(done),
 		.MOSI(MOSI),
-		.data_out(SPI_DATA_IN_I),
-		.load_data_in(load_data_in)
+		.data_out(SPI_DATA_IN_I)
 	);
 	
 	spi_logic_control spi_control(
@@ -62,7 +60,6 @@ module spi_logic_master(
 		.SPI_DATA_LEN(SPI_DATA_LEN),
 		.NEW_SPI_DATA_OUT(NEW_SPI_DATA_OUT),
 		.clk_divider(clk_divider),
-		.load_data_in(load_data_in),
 		.SPI_DATA_IN_I(SPI_DATA_IN_I),
 		.NEW_SPI_DATA_IN(SPI_DATA_IN)
 	);

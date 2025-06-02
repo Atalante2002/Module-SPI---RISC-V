@@ -15,7 +15,6 @@ module spi_logic_control(
 	
 	output [31:0] NEW_SPI_DATA_OUT, //nuevo dato de salida modifcado segun el registro de control
 	output [1:0] SPI_DATA_LEN,
-	input load_data_in, //para saber cuando hacer el cambio del orden de los bits
 	input [31:0] SPI_DATA_IN_I,
 	output [31:0] NEW_SPI_DATA_IN //nuevo dato de entrada modifcado segun el registro de control
 );
@@ -29,6 +28,7 @@ module spi_logic_control(
 	
 	//variables para manejar los estados
 	reg [2:0] corrent_state, next_state;
+	reg load_SS;
 	
 	//Ordenar los bit del registro SPI_CTRL
 	wire SPI_ON = SPI_CTRL[8];
@@ -43,7 +43,6 @@ module spi_logic_control(
 	//reflaxion de los bist del regisrtro de salida
 	spi_data_order #(.DATA_WIDTH(32)) data_order(
 		.SPI_DATA_LEN(SPI_DATA_LEN),
-		.en(load_data_in),
 		.rst(rst),
 		.SPI_DATA_IN(SPI_DATA_IN_I),
 		.SPI_DATA_OUT(NEW_SPI_DATA_IN),
@@ -53,12 +52,17 @@ module spi_logic_control(
 	//reflaxion de los bist del regisrtro de entrada
 	spi_data_order #(.DATA_WIDTH(32)) data_order_in(
 		.SPI_DATA_LEN(SPI_DATA_LEN),
-		.en(load_data),
 		.rst(rst),
 		.SPI_DATA_IN(SPI_DATA_OUT),
 		.SPI_DATA_OUT(NEW_SPI_DATA_OUT),
 		.SPI_BIT_ORDER(SPI_BIT_ORDER)
 	);
+	
+	//logica para el SCK interno el cual maneja el modulo de salida(PISO_SIPO)
+	assign SCK_inter = SPI_MODE[0] ? ~clk_divider : clk_divider;
+	assign SCK = SPI_MODE[1] ? ~clk_divider : clk_divider; //logica para SCK segun el modo
+	assign IRQ_SPI = SPI_I_MSK ? done : 1'b0;
+	assign SS = load_SS;
 	
 	//logica de la maquina estados
 	always @(posedge clk_cpu or posedge rst)
@@ -74,6 +78,7 @@ module spi_logic_control(
 		case (corrent_state)
 			IDLE: begin
 			load_data = 0;
+			load_SS = 1;
 			  if (SPI_ON && SPI_FRAME_START) begin
 			  	en_SCK = 1;
 			  	next_state = LOAD;
@@ -87,14 +92,17 @@ module spi_logic_control(
 			en_SCK = 1;
 			  if (SPI_START) begin
 			  	load_data = 1;
+			  	load_SS = 0;
 			  	next_state = TRANSMIT;
 			  end else begin
 			  	load_data = 0;
+			  	load_SS = 1;
 			  	next_state = LOAD;
 			      end
 			end
 			
 			TRANSMIT: begin
+			load_SS = 0;
 			en_SCK = 1;
 			load_data = 1;
 			next_state = LOAD_DATA;
@@ -104,8 +112,10 @@ module spi_logic_control(
 			  en_SCK = 1;
 			  load_data = 1;
 			  if (done) begin
+			  	load_SS = 1;
 			  	next_state = DONE;
 			  end else begin 
+			  	load_SS = 0;
 			  	next_state = LOAD_DATA;
 			      end
 			  
@@ -114,22 +124,18 @@ module spi_logic_control(
 			DONE: begin
 			  en_SCK = 1;
 			  load_data = 0;
+			  load_SS = 1;
 			  next_state = IDLE;
 			end
 			
 			default: begin
 			en_SCK = 0;
 			load_data = 0;
+			load_SS = 1;
 			next_state = IDLE;
 			end
 			
 		endcase
 	end
-	
-	assign IRQ_SPI = SPI_I_MSK ? done : 1'b0;
-	assign SCK = SPI_MODE[1] ? ~clk_divider : clk_divider; //logica para SCK segun el modo
-	
-	//logica para el SCK interno el cual maneja el modulo de salida(PISO_SIPO)
-	assign SCK_inter = SPI_MODE[0] ? ~clk_divider : clk_divider;
 	
 endmodule

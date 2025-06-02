@@ -1,5 +1,5 @@
 $date
-	Fri May 30 22:26:13 2025
+	Sun Jun  1 02:25:58 2025
 $end
 $version
 	Icarus Verilog
@@ -63,60 +63,61 @@ $var reg 32 @ data_out [31:0] $end
 $var reg 1 2 done $end
 $var reg 1 / load_data_in $end
 $var reg 32 A shift_reg [31:0] $end
+$var reg 32 B shift_reg_init [31:0] $end
 $upscope $end
 $scope module spi_control $end
-$var wire 9 B SPI_CTRL [8:0] $end
-$var wire 32 C SPI_DATA_IN_I [31:0] $end
-$var wire 32 D SPI_DATA_OUT [31:0] $end
+$var wire 9 C SPI_CTRL [8:0] $end
+$var wire 32 D SPI_DATA_IN_I [31:0] $end
+$var wire 32 E SPI_DATA_OUT [31:0] $end
 $var wire 1 ! SS $end
 $var wire 1 * clk_cpu $end
 $var wire 1 3 clk_divider $end
 $var wire 1 2 done $end
 $var wire 1 / load_data_in $end
 $var wire 1 + rst $end
-$var wire 1 E SPI_START $end
-$var wire 1 F SPI_ON $end
-$var wire 2 G SPI_MODE [1:0] $end
-$var wire 1 H SPI_I_MSK $end
-$var wire 1 I SPI_FRAME_START $end
-$var wire 2 J SPI_DATA_LEN [1:0] $end
-$var wire 1 K SPI_BIT_ORDER $end
+$var wire 1 F SPI_START $end
+$var wire 1 G SPI_ON $end
+$var wire 2 H SPI_MODE [1:0] $end
+$var wire 1 I SPI_I_MSK $end
+$var wire 1 J SPI_FRAME_START $end
+$var wire 2 K SPI_DATA_LEN [1:0] $end
+$var wire 1 L SPI_BIT_ORDER $end
 $var wire 1 7 SCK_inter $end
 $var wire 1 # SCK $end
-$var wire 32 L NEW_SPI_DATA_OUT [31:0] $end
-$var wire 32 M NEW_SPI_DATA_IN [31:0] $end
+$var wire 32 M NEW_SPI_DATA_OUT [31:0] $end
+$var wire 32 N NEW_SPI_DATA_IN [31:0] $end
 $var wire 1 % IRQ_SPI $end
-$var parameter 3 N DONE $end
-$var parameter 3 O IDLE $end
-$var parameter 3 P LOAD $end
-$var parameter 3 Q LOAD_DATA $end
-$var parameter 3 R TRANSMIT $end
-$var reg 3 S corrent_state [2:0] $end
+$var parameter 3 O DONE $end
+$var parameter 3 P IDLE $end
+$var parameter 3 Q LOAD $end
+$var parameter 3 R LOAD_DATA $end
+$var parameter 3 S TRANSMIT $end
+$var reg 3 T corrent_state [2:0] $end
 $var reg 1 1 en_SCK $end
-$var reg 1 T load_SS $end
+$var reg 1 U load_SS $end
 $var reg 1 0 load_data $end
-$var reg 3 U next_state [2:0] $end
+$var reg 3 V next_state [2:0] $end
 $scope module data_order $end
-$var wire 1 K SPI_BIT_ORDER $end
-$var wire 32 V SPI_DATA_IN [31:0] $end
-$var wire 2 W SPI_DATA_LEN [1:0] $end
+$var wire 1 L SPI_BIT_ORDER $end
+$var wire 32 W SPI_DATA_IN [31:0] $end
+$var wire 2 X SPI_DATA_LEN [1:0] $end
 $var wire 1 / en $end
 $var wire 1 + rst $end
-$var wire 5 X data_len [4:0] $end
-$var parameter 32 Y DATA_WIDTH $end
-$var reg 32 Z SPI_DATA_OUT [31:0] $end
-$var integer 32 [ i [31:0] $end
+$var wire 5 Y data_len [4:0] $end
+$var parameter 32 Z DATA_WIDTH $end
+$var reg 32 [ SPI_DATA_OUT [31:0] $end
+$var integer 32 \ i [31:0] $end
 $upscope $end
 $scope module data_order_in $end
-$var wire 1 K SPI_BIT_ORDER $end
-$var wire 32 \ SPI_DATA_IN [31:0] $end
-$var wire 2 ] SPI_DATA_LEN [1:0] $end
+$var wire 1 L SPI_BIT_ORDER $end
+$var wire 32 ] SPI_DATA_IN [31:0] $end
+$var wire 2 ^ SPI_DATA_LEN [1:0] $end
 $var wire 1 0 en $end
 $var wire 1 + rst $end
-$var wire 5 ^ data_len [4:0] $end
-$var parameter 32 _ DATA_WIDTH $end
-$var reg 32 ` SPI_DATA_OUT [31:0] $end
-$var integer 32 a i [31:0] $end
+$var wire 5 _ data_len [4:0] $end
+$var parameter 32 ` DATA_WIDTH $end
+$var reg 32 a SPI_DATA_OUT [31:0] $end
+$var integer 32 b i [31:0] $end
 $upscope $end
 $upscope $end
 $upscope $end
@@ -124,39 +125,40 @@ $upscope $end
 $enddefinitions $end
 $comment Show the parameter values. $end
 $dumpall
-b100000 _
-b100000 Y
-b10 R
-b11 Q
-b1 P
-b0 O
-b100 N
+b100000 `
+b100000 Z
+b10 S
+b11 R
+b1 Q
+b0 P
+b100 O
 b100000 >
 $end
 #0
 $dumpvars
+b0 b
 b0 a
-b0 `
-b11000 ^
+b11000 _
+b0 ^
 b0 ]
 b0 \
 b0 [
-b0 Z
-b11000 X
+b11000 Y
+b0 X
 b0 W
 b0 V
-b0 U
-1T
-b0 S
+1U
+b0 T
+b0 N
 b0 M
-b0 L
-0K
-b0 J
+0L
+b0 K
+0J
 0I
-0H
-b0 G
+b0 H
+0G
 0F
-0E
+b0 E
 b0 D
 b0 C
 b0 B
@@ -232,20 +234,20 @@ $end
 #95
 1*
 #100
-b10000 X
-b10000 ^
+b10000 Y
+b10000 _
 b10000 ;
 b1 4
 b1 =
-b1 J
-b1 W
-b1 ]
+b1 K
+b1 X
+b1 ^
+1J
 1I
-1H
 0*
 b1101 (
 b1101 -
-b1101 B
+b1101 C
 0+
 #105
 1*
@@ -286,20 +288,29 @@ b1101 B
 #195
 1*
 #200
-b1 U
+b1 V
 11
-1F
+b1001 8
+b1001 <
+b1001 M
+b1001 a
+1G
 0*
+b1001 )
+b1001 .
+b1001 E
+b1001 ]
 b100001101 (
 b100001101 -
-b100001101 B
+b100001101 C
 #205
-b1 S
+b1 T
 b1 :
 1*
 #210
 0*
 #215
+0/
 17
 1#
 13
@@ -358,28 +369,20 @@ b1 :
 b0 :
 1*
 #300
-b10 U
+b10 V
 0!
-0T
+0U
 10
-1E
-b1001 8
-b1001 <
-b1001 L
-b1001 `
+1F
 0*
 b100001111 (
 b100001111 -
-b100001111 B
-b1001 )
-b1001 .
-b1001 D
-b1001 \
+b100001111 C
 #305
-b11 U
+b11 V
 1!
-1T
-b10 S
+1U
+b10 T
 b1 :
 1*
 #310
@@ -388,10 +391,10 @@ b1 :
 07
 0#
 0!
-0T
+0U
 03
 b0 :
-b11 S
+b11 T
 1*
 #320
 0*
@@ -401,7 +404,10 @@ b1 :
 #330
 0*
 #335
+1/
+1$
 b1 ?
+b100 A
 17
 1#
 13
@@ -429,8 +435,10 @@ b1 :
 #370
 0*
 #375
+0/
+0$
 b10 ?
-b1000000000000000 A
+b10000000000000000000000000000010 A
 17
 1#
 13
@@ -459,7 +467,7 @@ b1 :
 0*
 #415
 b11 ?
-b100000000000000 A
+b1000000000000000000000000000001 A
 17
 1#
 13
@@ -487,8 +495,9 @@ b1 :
 0*
 1&
 #455
+1$
 b100 ?
-b1010000000000000 A
+b10100000000000000000000000000000 A
 17
 1#
 13
@@ -515,19 +524,20 @@ b1 :
 #490
 0*
 #495
+0$
 b101 ?
-b1101000000000000 A
+b11010000000000000000000000000000 A
 17
 1#
 13
 b0 :
 1*
 #500
-0E
+0F
 0*
 b100001101 (
 b100001101 -
-b100001101 B
+b100001101 C
 0&
 #505
 b1 :
@@ -549,7 +559,7 @@ b1 :
 0*
 #535
 b110 ?
-b110100000000000 A
+b1101000000000000000000000000000 A
 17
 1#
 13
@@ -577,7 +587,7 @@ b1 :
 0*
 #575
 b111 ?
-b11010000000000 A
+b110100000000000000000000000000 A
 17
 1#
 13
@@ -605,7 +615,7 @@ b1 :
 0*
 #615
 b1000 ?
-b1101000000000 A
+b11010000000000000000000000000 A
 17
 1#
 13
@@ -633,7 +643,7 @@ b1 :
 0*
 #655
 b1001 ?
-b110100000000 A
+b1101000000000000000000000000 A
 17
 1#
 13
@@ -661,7 +671,7 @@ b1 :
 0*
 #695
 b1010 ?
-b11010000000 A
+b110100000000000000000000000 A
 17
 1#
 13
@@ -689,7 +699,7 @@ b1 :
 0*
 #735
 b1011 ?
-b1101000000 A
+b11010000000000000000000000 A
 17
 1#
 13
@@ -717,7 +727,7 @@ b1 :
 0*
 #775
 b1100 ?
-b110100000 A
+b1101000000000000000000000 A
 17
 1#
 13
@@ -745,7 +755,7 @@ b1 :
 0*
 #815
 b1101 ?
-b11010000 A
+b110100000000000000000000 A
 17
 1#
 13
@@ -773,7 +783,7 @@ b1 :
 0*
 #855
 b1110 ?
-b1101000 A
+b11010000000000000000000 A
 17
 1#
 13
@@ -801,7 +811,7 @@ b1 :
 0*
 #895
 b1111 ?
-b110100 A
+b1101000000000000000000 A
 17
 1#
 13
@@ -829,7 +839,7 @@ b1 :
 0*
 #935
 b10000 ?
-b11010 A
+b110100000000000000000 A
 17
 1#
 13
@@ -856,19 +866,19 @@ b1 :
 #970
 0*
 #975
-b100 U
+b100 V
 1!
-1T
+1U
 1%
 b11010 "
 b11010 6
-b11010 M
-b11010 Z
+b11010 N
+b11010 [
 12
 b11010 5
 b11010 @
-b11010 C
-b11010 V
+b11010 D
+b11010 W
 17
 1#
 13
@@ -877,9 +887,9 @@ b0 :
 #980
 0*
 #985
-b0 U
+b0 V
 00
-b100 S
+b100 T
 b1 :
 1*
 #990
@@ -887,21 +897,24 @@ b1 :
 #995
 07
 0#
-b1 U
+b1 V
 03
 b0 :
-b0 S
+b0 T
 1*
 #1000
 0*
 #1005
-b1 S
+b1 T
 b1 :
 1*
 #1010
 0*
 #1015
-b1001 A
+0%
+02
+b0 A
+b0 ?
 17
 1#
 13
@@ -962,35 +975,34 @@ b0 :
 #1100
 b101100000000000 "
 b101100000000000 6
-b101100000000000 M
-b101100000000000 Z
-b10000 [
-b10000 a
-b10 U
+b101100000000000 N
+b101100000000000 [
+b10000 \
+b10000 b
+b10 V
 0!
-0T
+0U
 10
-0%
-1K
-1E
-0H
+1L
+1F
+0I
 b1001010100000000 8
 b1001010100000000 <
-b1001010100000000 L
-b1001010100000000 `
+b1001010100000000 M
+b1001010100000000 a
 0*
 b100101110 (
 b100101110 -
-b100101110 B
+b100101110 C
 b10101001 )
 b10101001 .
-b10101001 D
-b10101001 \
+b10101001 E
+b10101001 ]
 #1105
-b11 U
+b11 V
 1!
-1T
-b10 S
+1U
+b10 T
 b1 :
 1*
 #1110
@@ -998,39 +1010,32 @@ b1 :
 #1115
 07
 0#
-b100 U
+0!
+0U
 03
 b0 :
-b11 S
+b11 T
 1*
 #1120
 0*
 #1125
-b0 U
-00
-b100 S
 b1 :
 1*
 1&
 #1130
 0*
 #1135
-b1001010100000000 A
+1/
+b1 ?
+b10000000000000000100101010000000 A
 17
 1#
-b1 U
 13
 b0 :
-b0 S
 1*
 #1140
 0*
 #1145
-b10 U
-0!
-0T
-10
-b1 S
 b1 :
 1*
 #1150
@@ -1038,38 +1043,30 @@ b1 :
 #1155
 07
 0#
-b11 U
-1!
-1T
 03
 b0 :
-b10 S
 1*
 0&
 #1160
 0*
 #1165
-b100 U
-b11 S
 b1 :
 1*
 #1170
 0*
 #1175
+0/
+b10 ?
+b1000000000000000010010101000000 A
 17
 1#
-b0 U
-00
 13
 b0 :
-b100 S
 1*
 #1180
 0*
 1&
 #1185
-b1 U
-b0 S
 b1 :
 1*
 #1190
@@ -1077,53 +1074,32 @@ b1 :
 #1195
 07
 0#
-b10 U
-0!
-0T
-10
 03
 b0 :
-b1 S
 1*
 #1200
 0*
 #1205
-b11 U
-1!
-1T
-b10 S
 b1 :
 1*
 #1210
-0E
+0F
 0*
 b100101100 (
 b100101100 -
-b100101100 B
+b100101100 C
 0&
 #1215
-b10101001 "
-b10101001 6
-b10101001 M
-b10101001 Z
-b10000 [
-b1001010100000000 5
-b1001010100000000 @
-b1001010100000000 C
-b1001010100000000 V
+b11 ?
+b100000000000000001001010100000 A
 17
 1#
-b100 U
 13
 b0 :
-b11 S
 1*
 #1220
 0*
 #1225
-b0 U
-00
-b100 S
 b1 :
 1*
 #1230
@@ -1131,20 +1107,19 @@ b1 :
 #1235
 07
 0#
-b1 U
 03
 b0 :
-b0 S
 1*
 #1240
 0*
 #1245
-b1 S
 b1 :
 1*
 #1250
 0*
 #1255
+b100 ?
+b10000000000000000100101010000 A
 17
 1#
 13
@@ -1171,6 +1146,8 @@ b1 :
 #1290
 0*
 #1295
+b101 ?
+b1000000000000000010010101000 A
 17
 1#
 13
@@ -1197,6 +1174,8 @@ b1 :
 #1330
 0*
 #1335
+b110 ?
+b100000000000000001001010100 A
 17
 1#
 13
@@ -1223,6 +1202,8 @@ b1 :
 #1370
 0*
 #1375
+b111 ?
+b10000000000000000100101010 A
 17
 1#
 13
@@ -1249,6 +1230,8 @@ b1 :
 #1410
 0*
 #1415
+b1000 ?
+b1000000000000000010010101 A
 17
 1#
 13
@@ -1275,6 +1258,9 @@ b1 :
 #1450
 0*
 #1455
+1$
+b1001 ?
+b100000000000000001001010 A
 17
 1#
 13
@@ -1301,6 +1287,9 @@ b1 :
 #1490
 0*
 #1495
+0$
+b1010 ?
+b10000000000000000100101 A
 17
 1#
 13
@@ -1327,6 +1316,9 @@ b1 :
 #1530
 0*
 #1535
+1$
+b1011 ?
+b1000000000000000010010 A
 17
 1#
 13
@@ -1353,6 +1345,9 @@ b1 :
 #1570
 0*
 #1575
+0$
+b1100 ?
+b100000000000000001001 A
 17
 1#
 13
@@ -1379,6 +1374,9 @@ b1 :
 #1610
 0*
 #1615
+1$
+b1101 ?
+b10000000000000000100 A
 17
 1#
 13
@@ -1405,6 +1403,9 @@ b1 :
 #1650
 0*
 #1655
+0$
+b1110 ?
+b1000000000000000010 A
 17
 1#
 13
@@ -1431,6 +1432,8 @@ b1 :
 #1690
 0*
 #1695
+b1111 ?
+b100000000000000001 A
 17
 1#
 13
@@ -1457,6 +1460,9 @@ b1 :
 #1730
 0*
 #1735
+1$
+b10000 ?
+b10000000000000000 A
 17
 1#
 13
@@ -1483,6 +1489,20 @@ b1 :
 #1770
 0*
 #1775
+b100 V
+1!
+1U
+b1000000000000000 "
+b1000000000000000 6
+b1000000000000000 N
+b1000000000000000 [
+b10000 \
+0$
+12
+b1 5
+b1 @
+b1 D
+b1 W
 17
 1#
 13
@@ -1491,6 +1511,9 @@ b0 :
 #1780
 0*
 #1785
+b0 V
+00
+b100 T
 b1 :
 1*
 #1790
@@ -1498,17 +1521,23 @@ b1 :
 #1795
 07
 0#
+b1 V
 03
 b0 :
+b0 T
 1*
 #1800
 0*
 #1805
+b1 T
 b1 :
 1*
 #1810
 0*
 #1815
+02
+b0 A
+b0 ?
 17
 1#
 13

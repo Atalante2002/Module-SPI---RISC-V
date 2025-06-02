@@ -2,7 +2,21 @@ Module-SPI---RISC-V
 
 El propósito del módulo SPI (Serial Peripheral Interface) es proporcionar una interfaz de comunicación síncrona y serial entre un microcontrolador RISC-V y uno o varios dispositivos periféricos externos, como sensores, memorias, convertidores o módulos de comunicación, siguiendo el protocolo estándar SPI.
 
-Este módulo actúa como maestro SPI, siendo responsable de generar las señales necesarias para controlar la transmisión de datos: reloj serial (SCLK), selección de esclavos (SS o CS_n), y las líneas de datos (MOSI y MISO). Además, se encuentra diseñado para ser completamente configurable y controlado por el procesador RISC-V a través de una interfaz de memoria mapeada, lo que permite su integración directa en sistemas embebidos personalizados.
+Este módulo actúa como maestro SPI, siendo responsable de generar las señales necesarias para controlar la transmisión de datos: reloj serial (SCLK), selección de esclavos (SS o CS_n), y las líneas de datos (MOSI y MISO). Además, se encuentra diseñado para ser completamente configurable y controlado por el procesador RISC-V a través de una interfaz de memoria mapeada, lo que permite su integración directa en sistemas embebidos personalizados. El módulo actúa únicamente como dispositivo maestro y es posible configurar su frecuencia (SPI comunication), además cuenta con una transmisión FULL-DUPLEX que soporta 8, 16, 24 y 32 bits de información implementando un orden para los bits y 4 modos de operación. Finalmente cuando la transmisión concluye se genera una interrupción.
+
+Los datos son muestreados cuando:
+
+Clock Phase (CPHA) 
+
+CPHA = 1: Se realiza el muestreo de los datos cuando se presenta un flanco de subida en la señal SCLK
+CPHA = 0: Se raliza el muestreo de los datos cuando se presenta un flanco de bajada en la señal SCLK
+
+Clock Polarity (CPOL)
+
+CPOL = 1: La señal SCLK está arriba (1) cuando está inactiva
+CPOL = 0: La señal SCLK está abajo (0) cuando está inactiva
+
+
 
 El presente repositorio contiene la información y archivos desarrollados respecto del módulo para la comunicación SPI descripto en Verilog, además de los archivos generados en la síntesis por la herramienta Openlane.
 
@@ -33,6 +47,15 @@ Al tener estos dos módulos se realiza una máquina de estados, la cual se encar
 ![image](https://github.com/user-attachments/assets/ad339214-2a01-49d5-a12f-4664fe07b0cc)
 
 El módulo SPI_Controller es la unidad de control secuencial del sistema SPI Master, responsable de coordinar el proceso de comunicación con dispositivos esclavos SPI. En esta versión, se implementa como una máquina de estados finitos (FSM) tipo Mealy, lo cual permite generar salidas que dependen tanto del estado actual como de las entradas del sistema.
+
+Los registros y el protocolo de bit durante la lectura y escritura son los siguientes: 
+
+1. El usuario configura la bandera SPI_FRAME_START en el registro SPI_CTRL para iniciar una trama.
+2. El usuario escribe datos en el resgistro SPI_DATA_OUT. Este paso puede saltarse durante una trama de solo lectura.
+3. El usuario establece la bandera SPI_START en el SPI_CTRL para realizar la transmisión. Esta acción se realiza en un ciclo de lectura y escritura proporcionando transmisión full-duplex.
+4. El módulo SPI limpia la bandera SPI_START cuando la transmsión es completada y genera una solicitud de interrupción si fue habilitada.
+5. Los pasos 2 y 3 se repiten para todos los datos en la trama.
+6. El usaurio limpia la bandera SPI_FRAME_START en el registro SPI_CTRL para detener la trama. Esta acción retorna las lineas MOSI, SCLK, and SS lines a sus estados de inactividad de acuerdo al mode seleccionado.
 
 Representación Máquina de estados Mealy
 

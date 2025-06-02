@@ -108,15 +108,28 @@ Representación Máquina de estados Mealy
 
 ![image](https://github.com/user-attachments/assets/fb904973-1aa4-476c-9ca9-08ec20279f3d)
 
-Flujo de operación:
+Flujo de Operación SPI (Versión Concisa)
+Paso 1: Preparación
 
-Paso 1: Escribir datos en SPI_DATA_OUT.
+Escribir datos a transmitir en SPI_DATA_OUT (ej: 0xA5).
 
-Paso 2: Activar SPI_START = 1 (inicia transmisión).
+Configurar parámetros (SPI_BITRATE, SPI_DATA_LEN).
 
-Paso 3: Esperar a que SPI_START = 0 (transmisión completada).
+Paso 2: Inicio
 
-Paso 4: Leer SPI_DATA_IN para obtener los datos recibidos.
+Activar SPI_START = 1 (inicia transmisión/recepción full-duplex).
+
+Paso 3: Espera
+
+Monitorizar SPI_START:
+
+Mientras =1: Transmisión en curso.
+
+Cuando =0: Operación completada (auto-limpieza por hardware).
+
+Paso 4: Lectura
+
+Leer SPI_DATA_IN para obtener datos del esclavo (válido solo si SPI_START = 0).
 
 La máquina de estados describe el flujo de control de un módulo SPI con los siguientes estados y transiciones:
 

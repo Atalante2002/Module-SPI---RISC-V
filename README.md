@@ -106,7 +106,7 @@ Los registros y el protocolo de bit durante la lectura y escritura son los sigui
 
 Representación Máquina de estados Mealy
 
-![image](https://github.com/user-attachments/assets/a8059fd4-cb07-4bc9-abd7-bc1f7306d4a3)
+![image](https://github.com/user-attachments/assets/fb904973-1aa4-476c-9ca9-08ec20279f3d)
 
 Flujo de operación:
 
